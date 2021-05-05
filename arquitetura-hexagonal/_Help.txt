@@ -1,0 +1,16 @@
+docker-compose up -d
+docker-compose ps
+docker-compose down
+
+docker exec -it appproduct bash
+
+go mod init github.com/fredericocotrim/go-hexagonal
+
+go test ./...
+
+mockgen -destination=application/mocks/application.go -source=application/product.go application
+
+sqlite3 sqlite.db 
+.tables
+
+go mod tidy
